@@ -1,0 +1,15 @@
+services:
+  # バッチジョブ
+  batchapp-container:
+    build: ./javaAppBatch
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-container:5432/0912
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+    networks:
+      - mybookshelf_default
+#外部と通信
+networks:
+  mybookshelf_default:
+    name: mybookshelf_default
+    external: true
